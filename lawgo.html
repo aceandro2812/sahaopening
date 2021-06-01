@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content=
+      "width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="myribb.css" media="screen"/>
+    <title>Document</title>
+  </head>
+  <body bgcolor="black">
+      <div class="background" style="text-align: center;">
+        <!-- <button id="btn1" class="active" onclick="playPause()">Play/Pause</button>  -->
+        
+        <video id="video1" width="180"  style="align-self: center;"playsinline autoplay muted >
+            <source src="SAHACHARYA.mp4" type="video/mp4">
+            <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
+            Your browser does not support HTML video.
+          </video>
+          
+          
+
+
+<!--     
+    <div class="ribbon"> </div>
+    <div class="scissor"> </div>    -->
+    </div>  
+    <script>
+     
+      document.getElementById('video1').addEventListener('ended', function(e) {
+    // Your code goes here
+    window.location ="http://13.233.97.131:3000/homepage";
+      });
+    </script>
+
+
+
+
+
+</body>
+    
+    
+    
+  
+</html>
