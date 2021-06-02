@@ -1,44 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content=
-      "width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="myribb.css" media="screen"/>
-    <title>Document</title>
-  </head>
-  <body bgcolor="black">
-      <div class="background" style="text-align: center;">
-        <!-- <button id="btn1" class="active" onclick="playPause()">Play/Pause</button>  -->
-        
-        <video id="video1" width="180"  style="align-self: center;"playsinline autoplay muted >
-            <source src="SAHACHARYA.mp4" type="video/mp4">
-            <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
-            Your browser does not support HTML video.
-          </video>
-          
-          
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="myribb.css" media="screen" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body bgcolor="black">
 
 
-<!--     
+  <div id="container">
+    <div id="text"></div>
+    <div id="cursor"></div>
+  </div>
+
+  <div class="background" style="text-align: center;">
+    <!-- <button id="btn1" class="active" onclick="playPause()">Play/Pause</button>  -->
+
+    <video id="video1" width="180"  preload="auto" muted>
+      <source src="SAHACHARYA.mp4" type="video/mp4">
+      <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
+      Your browser does not support HTML video.
+    </video>
+
+
+
+
+    <!--     
     <div class="ribbon"> </div>
     <div class="scissor"> </div>    -->
-    </div>  
-    <script>
-     
-      document.getElementById('video1').addEventListener('ended', function(e) {
-    // Your code goes here
-    window.location ="http://13.233.97.131:3000/homepage";
-      });
-    </script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <script>
+    var video = document.getElementById("video1");
+    video.addEventListener("canplay", function () {
+      setTimeout(function () {
+        video.play();
+      }, 750);
+    });
+
+    // } ;
+    // List of sentences
+    var _CONTENT = [
+      "Welcome to ",
+      "........",
+      "..........",
+      "............"
+    ];
+
+    // Current sentence being processed
+    var _PART = 0;
+
+    // Character number of the current sentence being processed 
+    var _PART_INDEX = 0;
+
+    // Holds the handle returned from setInterval
+    var _INTERVAL_VAL;
+
+    // Element that holds the text
+    var _ELEMENT = document.querySelector("#text");
+
+    // Cursor element 
+    var _CURSOR = document.querySelector("#cursor");
+
+    // Implements typing effect
+    function Type() {
+      // Get substring with 1 characater added
+      var text = _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+      _ELEMENT.innerHTML = text;
+      _PART_INDEX++;
+
+      // If full sentence has been displayed then start to delete the sentence after some time
+      if (text === _CONTENT[_PART]) {
+        // Hide the cursor
+        _CURSOR.style.display = 'none';
+
+        clearInterval(_INTERVAL_VAL);
+        setTimeout(function () {
+          _INTERVAL_VAL = setInterval(Delete, 50);
+        }, 1000);
+      }
+    }
+
+    // Implements deleting effect
+    function Delete() {
+      // Get substring with 1 characater deleted
+      var text = _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+      _ELEMENT.innerHTML = text;
+      _PART_INDEX--;
+
+      // If sentence has been deleted then start to display the next sentence
+      if (text === '') {
+        clearInterval(_INTERVAL_VAL);
+
+        // If current sentence was last then display the first one, else move to the next
+        // if (_PART == (_CONTENT.length - 1))
+        //   _PART = 0;
+        // else
+        //   _PART++;
+
+        // _PART_INDEX = 0;
+
+        // Start to display the next sentence after some time
+        setTimeout(function () {
+          _CURSOR.style.display = 'inline-block';
+          _INTERVAL_VAL = setInterval(Type, 100);
+        }, 2000);
+      }
+
+    }
+
+    // Start the typing effect on load
+    _INTERVAL_VAL = setInterval(Type, 100);
+    document.getElementById('video1').addEventListener('ended', function (e) {
+      // Your code goes here
+      window.location = "http://13.233.97.131:3000/homepage";
+    });
+  </script>
 
 
 
 
 
 </body>
-    
-    
-    
-  
+
+
+
+
 </html>

@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content=
-      "width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="myribb.css" media="screen"/>
-    <title>Sahacharya</title>
-  </head>
-  <body bgcolor="black">
-      <div class="background" style="text-align: center;">
-        <button id="btn1" class="active" onclick="playPause()">cut</button> 
-        
-        <video id="video1" width="1480"  style="align-self: center;">
-            <source src="ribb.mp4" type="video/mp4">
-            <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
-            Your browser does not support HTML video.
-          </video>
-          
-          
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="myribb.css" media="screen" />
+ 
+  <title>Sahacharya</title>
+</head>
+
+<body bgcolor="black">
+  <div class="background" style="text-align: center;">
+    <button id="btn1" class="active" onclick="playPause()">cut</button>
+
+    <video id="video1" width="580" >
+      <source src="ribb.mp4" type="video/mp4">
+       <!-- <source src="mov_bbb.ogg" type="video/ogg">  -->
+      Your browser does not support HTML video.
+    </video>
+  </div>
 
 
-<!--     
-    <div class="ribbon"> </div>
-    <div class="scissor"> </div>    -->
-    </div>  
-    <script>
-      var myVideo = document.getElementById("video1");
-      myVideo.playbackRate = 2.0;
-      // if(!myVideo.paused)
-      //     document.getElementById("btn1").style.visibility="hidden"
+  
+  
 
-      function playPause() {
-        if (myVideo.paused)
-          myVideo.play();
+  <script>
+    var myVideo = document.getElementById("video1");
+    myVideo.playbackRate = 2.0;
+    // if(!myVideo.paused)
+    //     document.getElementById("btn1").style.visibility="hidden"
 
-        if (!myVideo.paused) {
-          document.getElementById("btn1").style.visibility = "hidden"
+    function playPause() {
+      if (myVideo.paused)
+        myVideo.play();
 
-          // window.location ="http://13.233.97.131:3000/homepage";
+      if (!myVideo.paused) {
+        document.getElementById("btn1").style.visibility = "hidden"
 
-
-        } else {
-          myVideo.pause();
-        }
+        // window.location ="http://13.233.97.131:3000/homepage";
 
 
+      } else {
+        myVideo.pause();
       }
-      document.getElementById('video1').addEventListener('ended', function(e) {
-    // Your code goes here
-    window.location ="lawgo.html";
-      });
-    </script>
+
+
+    }
+    document.getElementById('video1').addEventListener('ended', function (e) {
+      // Your code goes here
+      window.location = "lawgo.html";
+    });
+  </script>
 
 
 
 
 
 </body>
-    
-    
-    
-  
+
+
+
+
 </html>
