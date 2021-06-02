@@ -26,7 +26,8 @@ video {
     position: absolute;
     right: 0;
     top: 50%;
-}button.active {
+}
+button.active {
     background-color: #0077a2;
   }
   #container {
