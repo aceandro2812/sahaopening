@@ -6,7 +6,7 @@ video {
     bottom: 0;
     width: 100%;
     height: auto;
-    min-width: 100%;
+    min-width: 80%;
     min-height: 100%;
     z-index: -1;
     -webkit-transition: all 1s;
@@ -15,21 +15,20 @@ video {
     transition: all 1s;
   }
   button {
-    background-color: #666;
+    background-color:transparent;
     border: medium none;
-    color: #fff;
+    color:wheat;
     display: block;
     font-size: 18px;
     left: 0;
+
     margin: 0 auto;
     padding: 8px 16px;
     position: absolute;
     right: 0;
     top: 50%;
 }
-button.active {
-    background-color: #0077a2;
-  }
+ 
   #container {
     text-align: center;
   }
@@ -37,7 +36,7 @@ button.active {
   #text {
     display: inline-block;
     vertical-align: middle;
-    color: orange;
+    color: RED;
     font-size: 100px;
     letter-spacing: 2px;
   }
